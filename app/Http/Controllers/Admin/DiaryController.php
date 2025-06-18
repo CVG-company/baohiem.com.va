@@ -25,6 +25,7 @@ class DiaryController extends Controller
     protected $periodService;
     protected $contractService;
     protected $departmentService;
+    protected $hospitalService;
 
     public function __construct(
         HospitalService $hospitalService,

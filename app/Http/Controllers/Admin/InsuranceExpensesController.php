@@ -120,7 +120,9 @@ class InsuranceExpensesController extends Controller
     public function insuranceHospital(Request $request)
     {
         $data = $this->prepareData($request);
-        return view('admin.insurance-expenses.insurance-hospital', $data);
+        // Khai code đầu xuân
+        $hospitalList = $this->hospitalService->getHospital();
+        return view('admin.insurance-expenses.insurance-hospital', $data, compact(['hospitalList']));
     }
 
     public function insuranceDiary(Request $request)
