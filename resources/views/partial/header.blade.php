@@ -1,5 +1,5 @@
 <?php
-$currentUser = getInfoUserAdmin();
+$currentUser = getCurrentUserInfo();
 $menu = __('menu');
 ?>
 <header class="topbar">
@@ -333,7 +333,7 @@ $menu = __('menu');
                                         <div class="ms-3">
                                             @if(isset($currentUser))
                                             <h5 class="mb-1 fs-4 text-secondary">
-                                                {{ $currentUser->employee->employee_name }}
+                                                {{ $currentUser->employee->employee_name ?? $currentUser->employee_name ?? $currentUser->customer->full_name }}
                                             </h5>
                                             @endif
                                             <span class="mb-1 d-block text-secondary">Designer</span>
@@ -628,11 +628,11 @@ $menu = __('menu');
                                             @if(isset($currentUser))
                                             <div class="ms-3">
                                                 <h5 class="mb-1 fs-4 text-secondary">
-                                                    {{ $currentUser->employee->employee_name }}</h5>
+                                                    {{ $currentUser->employee->employee_name ?? $currentUser->employee_name ?? $currentUser->customer->full_name }}</h5>
                                                 <span
                                                     class="mb-1 d-block text-secondary">{{ $currentUser->role_name }}</span>
                                                 <p class="mb-0 d-flex align-items-center gap-2">
-                                                    <i class="ti ti-mail fs-4"></i> {{ $currentUser->employee->email }}
+                                                    <i class="ti ti-mail fs-4"></i> {{ $currentUser->employee->email ?? $currentUser->hospital->email ?? $currentUser->customer->email }}
                                                 </p>
                                             </div>
                                             @endif

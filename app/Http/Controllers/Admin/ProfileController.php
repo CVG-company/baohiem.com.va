@@ -19,7 +19,7 @@ class ProfileController extends Controller
     }
     public function changePassword(ProfileRequest $request)
     {
-        $user = getInfoUserAdmin();
+        $user = getCurrentUserInfo();
 
         if (Hash::check($request->current_password, $user->password)) {
             $user->update(['password' => Hash::make($request->new_password)]);
@@ -30,7 +30,7 @@ class ProfileController extends Controller
     }
     public function update(Request $request)
     {
-        $user = getInfoUserAdmin();
+        $user = getCurrentUserInfo();
         $user->employee->update($request->only(['employee_name', 'email', 'phone_number', 'address']));
         return redirect()->route('profile.user')->with('success', 'Cập nhật thông tin cá nhân thành công!');
     }
