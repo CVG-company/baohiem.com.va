@@ -34,25 +34,25 @@ return [
             ]
         ]
     ],
-    [
-        'name' => 'Quản lý sức khỏe',
-        'icon' => 'carbon:health-cross',
-        'url' => route('physical.index'),
-        'items' => [
-            [
-                'name' => 'Danh sách khám sức khỏe',
-                'url' => route('physical.index'),
-            ],
-            [
-                'name' => 'Khám sức khỏe',
-                'url' => route('physical.periodic'),
-            ],
-            [
-                'name' => 'Báo cáo khám sức khỏe',
-                'url' => route('healthReport.index'),
-            ]
-        ]
-    ],
+    // [
+    //     'name' => 'Quản lý sức khỏe',
+    //     'icon' => 'carbon:health-cross',
+    //     'url' => route('physical.index'),
+    //     'items' => [
+    //         [
+    //             'name' => 'Danh sách khám sức khỏe',
+    //             'url' => route('physical.index'),
+    //         ],
+    //         [
+    //             'name' => 'Khám sức khỏe',
+    //             'url' => route('physical.periodic'),
+    //         ],
+    //         [
+    //             'name' => 'Báo cáo khám sức khỏe',
+    //             'url' => route('healthReport.index'),
+    //         ]
+    //     ]
+    // ],
     [
         'name' => 'Quản trị',
         'icon' => 'material-symbols:shield-person-outline-rounded',
