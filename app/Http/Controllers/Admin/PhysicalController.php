@@ -36,7 +36,7 @@ class PhysicalController extends Controller
     {
         $params = $request->query();
         // Lấy danh sách công ty
-        $companyList = $this->companyService->getCompanyActiveSortByOrder();
+        $companyList = $this->companyService->getCompanyByContract();
 
         // Lấy danh sách niên hạn
         if (!isset($params['company'])) {
@@ -58,8 +58,8 @@ class PhysicalController extends Controller
         }
 
         $physicalList = !isset($params['date_added'])
-        ? $this->physicalService->getPhysical($companyList->first()->id, $params['time_range'], $params)
-        : $this->physicalService->getPhysicalDateAdded($companyList->first()->id, $params['time_range'], $params);
+            ? $this->physicalService->getPhysical($companyList->first()->id, $params['time_range'], $params)
+            : $this->physicalService->getPhysicalDateAdded($companyList->first()->id, $params['time_range'], $params);
 
         return view('admin.physical.index', compact(['companyList', 'periodList', 'contractList', 'physicalList']));
     }
@@ -68,7 +68,7 @@ class PhysicalController extends Controller
     public function periodic(Request $request)
     {
         $params = $request->query();
-        $companyList = $this->companyService->getCompanyActiveSortByOrder();
+        $companyList = $this->companyService->getCompanyByContract();
         if (!isset($params['company'])) {
             $params['company'] = $companyList->first()->id;
         }
@@ -116,7 +116,7 @@ class PhysicalController extends Controller
     public function healthReport(Request $request)
     {
         $params = $request->query();
-        $companyList = $this->companyService->getCompanyActiveSortByOrder();
+        $companyList = $this->companyService->getCompanyByContract();
         if (!isset($params['company'])) {
             $params['company'] = $companyList->first()->id;
         }

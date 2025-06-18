@@ -11,7 +11,7 @@ class TestDetail extends Model
 
     protected $fillable = [
         'id',
-        'test_category_id',
+        'test_catalogue_id',
         'active',
         'max',
         'min',
@@ -19,5 +19,4 @@ class TestDetail extends Model
         'normal_index',
         'clinic_id',
     ];
-
 }

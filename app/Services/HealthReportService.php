@@ -150,7 +150,7 @@ class HealthReportService
             ->join('tbl_company', 'tbl_province.id', '=', 'tbl_company.province_id')
             ->join('tbl_test_results_detail', 'tbl_health_checkup_information.id', '=', 'tbl_test_results_detail.health_checkup_information_id')
             ->join('tbl_test_detail', 'tbl_test_results_detail.test_detail_id', '=', 'tbl_test_detail.id')
-            ->join('tbl_test_category', 'tbl_test_detail.test_category_id', '=', 'tbl_test_category.id')
+            ->join('tbl_test_catalogue', 'tbl_test_detail.test_catalogue_id', '=', 'tbl_test_catalogue.id')
             ->where('tbl_information_insurance.active', 1)
             ->where('tbl_health_checkup_information.active', 1)
             ->where('tbl_company.id', $company_id)
@@ -160,11 +160,11 @@ class HealthReportService
             ])
             ->select(
                 'tbl_test_detail.id as service_code',
-                DB::raw('tbl_test_detail.test_detail_name + CHAR(13) + tbl_test_detail.normal_value as service_name'),
-                'tbl_test_category.id'
+                DB::raw('tbl_test_detail.test_detail_name + CHAR(13) + tbl_test_detail.normal_index as service_name'),
+                'tbl_test_catalogue.id'
             )
             ->distinct()
-            ->orderBy('tbl_test_category.id')
+            ->orderBy('tbl_test_catalogue.id')
             ->get();
 
         return $results;
@@ -320,5 +320,4 @@ class HealthReportService
 
         return $results;
     }
-
 }
